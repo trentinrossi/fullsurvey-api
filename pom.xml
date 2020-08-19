@@ -125,13 +125,13 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
-					<annotationProcessorPaths>
+					<!-- <annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
 						</path>
-					</annotationProcessorPaths>
+					</annotationProcessorPaths> -->
 				</configuration>
 			</plugin>
 		</plugins>
