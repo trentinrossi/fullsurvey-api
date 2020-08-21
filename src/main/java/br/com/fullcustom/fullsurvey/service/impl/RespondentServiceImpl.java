@@ -38,6 +38,10 @@ public class RespondentServiceImpl implements IService<RespondentDTO, Respondent
         return repository.findAll(pageable).map(this.mapper::toDto);
     }
 
+    public Page<RespondentDTO> findAll(Pageable pageable, String globalFilter) {
+        return repository.findByNameContaining(pageable, globalFilter).map(this.mapper::toDto);
+    }
+
     @Override
     public Respondent findById(UUID id) {
         return repository.findById(id).orElseThrow(

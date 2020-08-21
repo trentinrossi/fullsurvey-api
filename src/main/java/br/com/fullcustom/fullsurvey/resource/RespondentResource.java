@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,9 +28,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/v1/rest/respondent", produces = "application/json")
-@Api(value = "Respondent", 
-     description = "Respondente", 
-     tags = "Respondent")
+@Api(value = "Respondent", description = "Respondente", tags = "Respondent")
 public class RespondentResource {
 
     @Autowired
@@ -37,8 +36,9 @@ public class RespondentResource {
 
     @GetMapping
     @ApiOperation(value = "Retorna todos os respondentes")
-    public ResponseEntity<Page<RespondentDTO>> findAll(Pageable page) {
-        Page<RespondentDTO> list = service.findAll(page);
+    public ResponseEntity<Page<RespondentDTO>> findAll(Pageable page,
+            @RequestParam(value = "globalFilter", defaultValue = "") String globalFilter) {
+        Page<RespondentDTO> list = service.findAll(page, globalFilter);
         return ResponseEntity.ok(list);
     }
 
