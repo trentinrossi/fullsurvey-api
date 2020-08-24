@@ -83,7 +83,7 @@ public class RespondentDTO implements Serializable {
 
     @Min(value = 1)    
     @ApiModelProperty(notes = "Código da empresa")
-    private int company_id;
+    private int companyId;
 
     @Size(max = 255)
     @ApiModelProperty(notes = "Nome da empresa")
@@ -91,7 +91,7 @@ public class RespondentDTO implements Serializable {
 
     @Min(value = 1)    
     @ApiModelProperty(notes = "Código da filial")
-    private int branch_id;
+    private int branchId;
 
     @Size(max = 255)
     @ApiModelProperty(notes = "Nome da filial")
@@ -110,7 +110,7 @@ public class RespondentDTO implements Serializable {
             LocalDate admissionDate, LocalDate experienceContractExpiration1, LocalDate experienceContractExpiration2,
             @Size(max = 150) String educationLevel, @Size(max = 150) String workstationId,
             @Size(max = 150) String positionName, LocalDate dismissalDate, @Size(max = 100) String dismissalCause,
-            @Min(1) @Max(9) int company_id, @Size(max = 255) String companyName, @Min(1) @Max(9) int branch_id,
+            @Min(1) @Max(9) int companyId, @Size(max = 255) String companyName, @Min(1) @Max(9) int branchId,
             @Size(max = 255) String branchName, LocalDate visitDate, @Size(max = 255) String visitDescription) {
         this.respondentIdentifier = respondentIdentifier;
         this.respondentType = respondentType;
@@ -127,9 +127,9 @@ public class RespondentDTO implements Serializable {
         this.positionName = positionName;
         this.dismissalDate = dismissalDate;
         this.dismissalCause = dismissalCause;
-        this.company_id = company_id;
+        this.companyId = companyId;
         this.companyName = companyName;
-        this.branch_id = branch_id;
+        this.branchId = branchId;
         this.branchName = branchName;
         this.visitDate = visitDate;
         this.visitDescription = visitDescription;

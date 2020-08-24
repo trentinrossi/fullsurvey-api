@@ -67,13 +67,13 @@ public class Respondent implements Serializable {
     private String dismissalCause;
 
     @Column(name = "company_id")
-    private int company_id;
+    private int companyId;
 
     @Column(name = "company_name", length = 255)
     private String companyName;
 
     @Column(name = "branch_id")
-    private int branch_id;
+    private int branchId;
 
     @Column(name = "branch_name", length = 255)
     private String branchName;
@@ -90,8 +90,8 @@ public class Respondent implements Serializable {
     public Respondent(UUID id, String respondentIdentifier, RespondentType respondentType, int registration,
             String name, String cpf, String email, String phoneNumber, LocalDate admissionDate,
             LocalDate experienceContractExpiration1, LocalDate experienceContractExpiration2, String educationLevel,
-            String workstationId, String positionName, LocalDate dismissalDate, String dismissalCause, int company_id,
-            String companyName, int branch_id, String branchName, LocalDate visitDate, String visitDescription) {
+            String workstationId, String positionName, LocalDate dismissalDate, String dismissalCause, int companyId,
+            String companyName, int branchId, String branchName, LocalDate visitDate, String visitDescription) {
         this.id = id;
         this.respondentIdentifier = respondentIdentifier;
         this.respondentType = respondentType;
@@ -108,9 +108,9 @@ public class Respondent implements Serializable {
         this.positionName = positionName;
         this.dismissalDate = dismissalDate;
         this.dismissalCause = dismissalCause;
-        this.company_id = company_id;
+        this.companyId = companyId;
         this.companyName = companyName;
-        this.branch_id = branch_id;
+        this.branchId = branchId;
         this.branchName = branchName;
         this.visitDate = visitDate;
         this.visitDescription = visitDescription;
@@ -244,12 +244,12 @@ public class Respondent implements Serializable {
         this.dismissalCause = dismissalCause;
     }
 
-    public int getCompany_id() {
-        return company_id;
+    public int getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany_id(int company_id) {
-        this.company_id = company_id;
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public String getCompanyName() {
@@ -260,12 +260,12 @@ public class Respondent implements Serializable {
         this.companyName = companyName;
     }
 
-    public int getBranch_id() {
-        return branch_id;
+    public int getBranchId() {
+        return branchId;
     }
 
-    public void setBranch_id(int branch_id) {
-        this.branch_id = branch_id;
+    public void setBranchId(int branchId) {
+        this.branchId = branchId;
     }
 
     public String getBranchName() {
@@ -319,8 +319,8 @@ public class Respondent implements Serializable {
 
     @Override
     public String toString() {
-        return "Respondent [admissionDate=" + admissionDate + ", branchName=" + branchName + ", branch_id=" + branch_id
-                + ", companyName=" + companyName + ", company_id=" + company_id + ", cpf=" + cpf + ", dismissalCause="
+        return "Respondent [admissionDate=" + admissionDate + ", branchName=" + branchName + ", branch_id=" + branchId
+                + ", companyName=" + companyName + ", company_id=" + companyId + ", cpf=" + cpf + ", dismissalCause="
                 + dismissalCause + ", dismissalDate=" + dismissalDate + ", educationLevel=" + educationLevel
                 + ", email=" + email + ", experienceContractExpiration1=" + experienceContractExpiration1
                 + ", experienceContractExpiration2=" + experienceContractExpiration2 + ", id=" + id + ", name=" + name
