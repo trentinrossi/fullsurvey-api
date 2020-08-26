@@ -31,8 +31,7 @@ public class RespondentDTO implements Serializable {
     @NotNull
     @ApiModelProperty(notes = "Tipo", required = true)
     private RespondentType respondentType;
-
-    @Min(value = 1)    
+       
     @ApiModelProperty(notes = "Matrícula")
     private int registration;
 
@@ -41,11 +40,11 @@ public class RespondentDTO implements Serializable {
     @ApiModelProperty(notes = "Nome", required = true)
     private String name;
 
-    @Size(min = 1, max = 45)
     @ApiModelProperty(notes = "CPF")
     private String cpf;
 
     @Email
+    @NotNull
     @ApiModelProperty(notes = "Endereço de e-mail")
     private String email;
 
@@ -81,7 +80,6 @@ public class RespondentDTO implements Serializable {
     @ApiModelProperty(notes = "Causa da demissão")
     private String dismissalCause;
 
-    @Min(value = 1)    
     @ApiModelProperty(notes = "Código da empresa")
     private int companyId;
 
@@ -89,7 +87,6 @@ public class RespondentDTO implements Serializable {
     @ApiModelProperty(notes = "Nome da empresa")
     private String companyName;
 
-    @Min(value = 1)    
     @ApiModelProperty(notes = "Código da filial")
     private int branchId;
 
