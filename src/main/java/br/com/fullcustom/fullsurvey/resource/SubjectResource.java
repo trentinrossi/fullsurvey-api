@@ -37,8 +37,8 @@ public class SubjectResource {
 
     @GetMapping
     @ApiOperation(value = "Retorna todos os assuntos")
-    public ResponseEntity<Page<SubjectDTO>> findAll(Pageable page) {
-        Page<SubjectDTO> list = service.findAll(page);
+    public ResponseEntity<Page<Subject>> findAll(Pageable page) {
+        Page<Subject> list = service.findAllNoDto(page);
         return ResponseEntity.ok(list);
     }
 

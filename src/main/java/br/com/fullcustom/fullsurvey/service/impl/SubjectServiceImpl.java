@@ -38,6 +38,10 @@ public class SubjectServiceImpl implements IService<SubjectDTO, Subject> {
         return repository.findAll(pageable).map(this.mapper::toDto);
     }
 
+    public Page<Subject> findAllNoDto(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
     @Override
     public Subject findById(UUID id) {
         return repository.findById(id).orElseThrow(
