@@ -42,6 +42,13 @@ public class SubjectResource {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping(path = "/getSubjectsByCategory/{id}")
+    @ApiOperation(value = "Retorna todas os assuntos de uma determinada categoria")
+    public ResponseEntity<Page<SubjectDTO>> findAllByCategoryId(@PathVariable UUID id) {
+        Page<SubjectDTO> res = service.findSubjectsByCategoryId(id);
+        return ResponseEntity.ok(res);
+    }
+
     @GetMapping(path = "/{id}")
     @ApiOperation(value = "Retorna um assunto conforme o id enviado na requisição")
     public ResponseEntity<Subject> findById(@PathVariable UUID id) {

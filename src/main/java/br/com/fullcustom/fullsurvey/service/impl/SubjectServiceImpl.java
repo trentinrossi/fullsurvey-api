@@ -1,9 +1,12 @@
 package br.com.fullcustom.fullsurvey.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -52,12 +55,30 @@ public class SubjectServiceImpl implements IService<SubjectDTO, Subject> {
     public SubjectDTO findByIdDto(UUID id) {
         return repository.findById(id).map(mapper::toDto).orElseThrow(
                 () -> new ObjectNotFoundException(Subject.class.getName() + " not Found by id: " + id));
-    }
+    }    
 
     @Override
     public void delete(UUID id) {
         findById(id);
         repository.deleteById(id);
+    }
+
+    /**
+     * Retorna todos os {@link AnswerOptionDTO} relacionados da categoria passada no
+     * parâmetro
+     * 
+     * @param id
+     * @return {@link SubjectDTO}
+     */
+    public Page<SubjectDTO> findSubjectsByCategoryId(UUID id) {
+        List<Subject> subjects = repository.findByCategoryId(id);
+        List<SubjectDTO> dtos = new ArrayList<>();
+
+        for (int i = 0; i < subjects.size(); i++) {
+            dtos.add(this.mapper.toDto(subjects.get(i)));
+        }
+
+        return new PageImpl<SubjectDTO>(dtos);
     }
 
 }
