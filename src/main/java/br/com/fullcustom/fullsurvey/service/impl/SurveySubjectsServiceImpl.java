@@ -63,6 +63,19 @@ public class SurveySubjectsServiceImpl implements IService<SurveySubjectsDTO, Su
     }
 
     /**
+     * Retorna todos os {@link Subject} não relacionados à pesquisa passada no
+     * parâmetro (subjects disponíveis para seleção)
+     * 
+     * @param id
+     * @return {@link Subject}
+     */
+    public Page<Subject> findAvaiableSubjectsBySurveyId(UUID id) {
+
+        List<Subject> list = this.repository.findAvaiableSubjects(id);
+        return new PageImpl<Subject>(list);
+    }
+
+    /**
      * Retorna todos os {@link Subject} relacionados da pesquisa passada no
      * parâmetro
      * 
@@ -106,6 +119,7 @@ public class SurveySubjectsServiceImpl implements IService<SurveySubjectsDTO, Su
 
     /**
      * Remove um ou mais assuntos de uma pesquisa
+     * 
      * @param dto
      */
     public void deleteSubjectsFromSurvey(SurveySubjectsDTO dto) {

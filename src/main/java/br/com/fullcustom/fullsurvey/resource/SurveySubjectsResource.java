@@ -48,12 +48,19 @@ public class SurveySubjectsResource {
         return ResponseEntity.ok(subjects);
     }
 
+    @GetMapping(path = "/getAvaiableSubjectsBySurveyId/{id}")
+    @ApiOperation(value = "Retorna todos os assuntos disponíveis para serem adicionados à uma determinada pesquisa")
+    public ResponseEntity<Page<Subject>> findAvaiableSubjectsBySurvey(@PathVariable UUID id) {
+        Page<Subject> subjects = service.findAvaiableSubjectsBySurveyId(id);
+        return ResponseEntity.ok(subjects);
+    }
+
     @PostMapping(path = "/addSurveySubjects")
     @ApiOperation(value = "Adiciona um novo assunto a uma pesquisa")
     public ResponseEntity<Page<Subject>> insertSubjectToSurvey(@Valid @RequestBody SurveySubjectsDTO entity) {
         entity.setId(null);
         service.addSubjectsToSurvey(entity);
-        URI uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/getSubjectsFromSurvey/{id}").buildAndExpand(entity.getSurveyId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/v1/rest/surveySubjects/getSubjectsFromSurvey/{id}").buildAndExpand(entity.getSurveyId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
