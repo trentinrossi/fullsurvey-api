@@ -3,6 +3,7 @@ package br.com.fullcustom.fullsurvey.resource;
 import java.net.URI;
 import java.util.UUID;
 
+import javax.validation.Path;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping(path = "/v1/rest/surveySubjects", produces = "application/json")
 @Api(value = "Survey Subjects", 
-     description = "Assuntos/domensões de uma pesquisa", 
+     description = "Assuntos/dimensões de uma pesquisa",
      tags = "Survey Subjects")
 public class SurveySubjectsResource {
 
@@ -55,6 +56,13 @@ public class SurveySubjectsResource {
         return ResponseEntity.ok(subjects);
     }
 
+    @GetMapping(path = "/getAvaiableSubjectsBySurveyIdAndCategoryId/{id}/{categoryId}")
+    @ApiOperation(value = "Retorna todos os assuntos disponíveis para serem adicionados à uma determinada pesquisa, filtrados por categoria")
+    public ResponseEntity<Page<Subject>> findAvaiableSubjectsBySurveyAndCategory(@PathVariable UUID id, @PathVariable UUID categoryId) {
+        Page<Subject> subjects = service.findAvaiableSubjectsBySurveyIdAndCategoryId(id, categoryId);
+        return ResponseEntity.ok(subjects);
+    }
+
     @PostMapping(path = "/addSurveySubjects")
     @ApiOperation(value = "Adiciona um novo assunto a uma pesquisa")
     public ResponseEntity<Page<Subject>> insertSubjectToSurvey(@Valid @RequestBody SurveySubjectsDTO entity) {
@@ -64,7 +72,7 @@ public class SurveySubjectsResource {
         return ResponseEntity.created(uri).build();
     }
 
-    @DeleteMapping(path = "/deleteSurveySubjetcs")
+    @DeleteMapping(path = "/deleteSurveySubjects")
     @ApiOperation(value = "Remove um assunto de uma pesquisa")
     public ResponseEntity<SurveySubjectsDTO> delete(@Valid @RequestBody SurveySubjectsDTO entity) {
         service.deleteSubjectsFromSurvey(entity);

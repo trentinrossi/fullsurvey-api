@@ -31,5 +31,4 @@ public class SurveySubjectsDTO implements Serializable {
         this.surveyId = surveyId;
         this.subjects = subjects;
     }
-
 }

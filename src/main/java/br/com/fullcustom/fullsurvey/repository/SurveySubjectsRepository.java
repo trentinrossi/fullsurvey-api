@@ -19,4 +19,7 @@ public interface SurveySubjectsRepository extends JpaRepository<SurveySubjects, 
 
     @Query("select u from subject u where not exists (select j from survey_subjects j where subject_id = u.id AND survey_id = ?1)")
     List<Subject> findAvaiableSubjects(UUID surveyId);
+
+    @Query("select u from subject u where category_id = ?2 and not exists (select j from survey_subjects j where subject_id = u.id AND survey_id = ?1)")
+    List<Subject> findAvaiableSubjectsByCategoryId(UUID surveyId, UUID categoryId);
 }
