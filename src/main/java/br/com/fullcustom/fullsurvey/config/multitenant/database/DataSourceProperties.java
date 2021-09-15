@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class DataSourceProperties {
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSourceProperties.class);
 
-    private Map<Object, Object> datasources = new LinkedHashMap<>();
+    private final Map<Object, Object> datasources = new LinkedHashMap<>();
 
     public Map<Object, Object> getDatasources() {
         return datasources;

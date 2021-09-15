@@ -1,4 +1,4 @@
--- CREATE EXTENSION uuid-ossp;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA "pg_catalog";
 
 --############## Category
 create table category (
